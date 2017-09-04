@@ -1,6 +1,3 @@
-if (!window.drawNestedSetsTree) {
-  alert('Функция не найдена');
-}
 
 const demoData = [
     {
@@ -60,7 +57,9 @@ const demoData = [
   }
 ];
 
-window.drawNestedSetsTree(
+convertData(demoData);
+
+drawNestedSetsTree(
   demoData,
   document.querySelector('.demo')
 );
