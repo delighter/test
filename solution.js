@@ -1,3 +1,24 @@
+
+function convertData(nestedSets) {
+  nestedSets.forEach(function(nestedItem, index, currentData) {
+		var children = currentData.filter(function(child) {
+        return nestedItem.left < child.left && nestedItem.right > child.right;
+    });
+
+    if (children.length) {
+      children.forEach(function(child) {
+        var index = currentData.indexOf(child);
+        delete currentData[index];
+      });
+      
+      convertData(children);     
+      nestedItem.children = children;
+    }
+  });
+}
+convertData(demoData);
+
+
 function drawNestedSetsTree(data, node) {
   // Удалите весь код ниже и замените его на свою реализацию
   const ul = document.createElement('ul');
