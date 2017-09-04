@@ -1,4 +1,3 @@
-
 function convertData(nestedSets) {
   nestedSets.forEach(function(nestedItem, index, currentData) {
 		var children = currentData.filter(function(child) {
@@ -16,22 +15,20 @@ function convertData(nestedSets) {
     }
   });
 }
-convertData(demoData);
-
 
 function drawNestedSetsTree(data, node) {
-  // Удалите весь код ниже и замените его на свою реализацию
+  
   const ul = document.createElement('ul');
-  data.forEach(({ title }) => {
+  
+  data.forEach(item => {
     const li = document.createElement('li');
-    li.textContent = title;
+    li.textContent = item.title;
+    
+    if (typeof item.children != 'undefined' && item.children.length) {
+    	drawNestedSetsTree(item.children, li);
+    }
+
     ul.appendChild(li);
   });
   node.appendChild(ul);
-}
-
-
-
-if (typeof module !== 'undefined') {
-  module.exports = drawNestedSetsTree;
 }
